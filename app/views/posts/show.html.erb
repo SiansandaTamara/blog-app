@@ -1,2 +1,15 @@
-<h1>This shows single Posts</h1>
-<p>This page will be showing single posts</p>
+<article class="post">
+  <div class="owner-details">
+  <h3 class="post-owner"><%= @post.title %>  by <%= @post.author.name %></h3>
+  <div class="post-stats">
+    <span>Comments: <%= @post.comments_counter %> &nbsp;,&nbsp;</span>
+    <span>Likes: <%= @post.likes_counter %></span>
+  </div>
+  </div>
+  <p><%= @post.text %></p>
+</article>
+<ul class="comments-ul">
+  <% @post.recent_comments.each do |comment| %>
+    <li><%= comment.author.name %>: <%= comment.text %>
+  <% end %>
+</ul> 
