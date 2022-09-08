@@ -1,10 +1,11 @@
-<article class ="posts">
-  <h3 class="post-title">
-  <%= link_to(post.title, user_post_path(id: post.id, user_id: post.author_id)) %>
-  </h3>
-<p><%= truncate(post.text, length: 250) %></p>
-  <div class="post-infor">
-    <p class="comments">Comments: <%=post.comments_counter %></p>
-    <p class="likes">Likes: <%=post.likes_counter %></p>
-   </div>
-</article>
+<section class="user-partial">
+
+<div class="content">
+ <h2>  <%= link_to(user.name, user_path(user)) %></h2>
+
+ <p>
+  Number of Posts: <%= user.posts_counter%>
+ </p>
+
+</div>
+</section>
