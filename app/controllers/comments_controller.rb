@@ -4,13 +4,19 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comments_params)
-    redirect_to user_posts_path(id: @comment.post_id, user_id: @comment.author_id) if @comment.save
+    @post = Post.find(params[:post_id])
+    @user = User.where(id: @post.author_id)
+    @user.each do |user|
+      @comment = @post.comments.new(text: comments_params[:text], author_id: user.id, post_id: @post.id)
+    end
+    redirect_to user_posts_path(id: @post.id, user_id: @post.author_id) if @comment.save
   end
 
   private
 
   def comments_params
-    params.require(:comment).permit(:text, :post_id, :author_id)
+    params.require(:comment).permit(:text).tap do |comments_params|
+      comments_params.require(:text)
+    end
   end
 end
