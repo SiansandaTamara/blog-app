@@ -1,8 +1,12 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
- 
-  resources :users, only: [:index, :show] do
-    resources :posts, only: [:index, :show]
+  root 'users#index'
+
+  resources :users, only: %i[index show] do
+    resources :posts, only: %i[index show new create]
+  end
+
+  resources :posts do
+    resources :comments, only: %i[create]
+    resources :likes, only: %i[create]
   end
 end
