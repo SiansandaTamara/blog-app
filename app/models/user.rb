@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :likes, foreign_key: 'author_id', class_name: 'Like'
 
   after_save :recent_posts
-  
+
   # validations
   validates :name, presence: true
   validates :email, uniqueness: true
