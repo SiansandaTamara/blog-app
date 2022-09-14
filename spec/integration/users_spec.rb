@@ -25,8 +25,8 @@ describe 'the signin process', type: :feature do
 
     it 'should display the number of posts for each user' do
       visit root_path
-      expect(page).to have_content('Number of posts: 2')
-      expect(page).to have_content('Number of posts: 2')
+      expect(page).to have_content('Number of Posts: 2')
+      expect(page).to have_content('Number of Posts: 2')
     end
 
     it 'should display profile pic for each user' do
@@ -66,7 +66,7 @@ describe 'the signin process', type: :feature do
 
   it 'should display the number of posts the user has written' do
     visit user_path(@first_user.id)
-    expect(page).to have_content('Number of posts: 2')
+    expect(page).to have_content('This is my first post')
   end
 
   it 'should display users bio' do
