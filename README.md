@@ -21,8 +21,7 @@
 ## Getting Started
 
 To get a local copy of the app, run the following commands in your terminal:
-- `git clone https://github.com/SiansandaTamara/Blog_app/.git`
-- `cd /Blog_app.git`
+- `git clone https://github.com/SiansandaTamara/blog-app.git``
 - `bundle install`
 
 Run the following commands to run the app
@@ -47,6 +46,7 @@ In your browser, go to
 - Twitter: [@twitterhandle](https://twitter.com/TamaraSiansanda)
 
 
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
@@ -60,3 +60,4 @@ Give a ⭐️ if you like this project!
 ## 📝 License
 
 This project is [MIT](./MIT.md) licensed.
+
