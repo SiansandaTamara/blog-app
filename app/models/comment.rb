@@ -2,7 +2,7 @@ class Comment < ApplicationRecord
   belongs_to :post, class_name: 'Post'
   belongs_to :author, class_name: 'User'
 
-          # validations
+  # validations
   validates :text, presence: true
   validates :author_id, presence: true
   validates :post_id, presence: true
