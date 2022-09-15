@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.order(:name)
   end
 
-  def show; end
-
-  def new
-    @user = User.new
+  def show
+    @user = User.find(params[:id])
+    @recent_posts = @user.recent_posts
   end
 end

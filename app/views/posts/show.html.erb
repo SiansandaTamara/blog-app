@@ -7,9 +7,16 @@
   </div>
   </div>
   <p><%= @post.text %></p>
+  <%= form_with model: [@post, @post.likes.new] do |f| %>
+    <%= f.submit "Like" %>
+  <% end %>
+  <%= link_to "Comment", new_post_comment_path(@post) %>
 </article>
 <ul class="comments-ul">
   <% @post.recent_comments.each do |comment| %>
     <li><%= comment.author.name %>: <%= comment.text %>
   <% end %>
 </ul> 
+
+<%= link_to 'New Post', new_user_post_path(@user) %>
+<%= link_to 'all Posts', user_posts_path(@user) %>

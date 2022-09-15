@@ -1,6 +1,6 @@
 <article class ="posts">
   <h3 class="post-title">
-  <%= link_to(post.title, user_post_path(id: post.id, user_id: post.author_id)) %>
+    <%= link_to(post.title, user_post_path(user_id: post.author_id, id: post.id)) %>
   </h3>
 <p><%= truncate(post.text, length: 250) %></p>
   <div class="post-infor">
