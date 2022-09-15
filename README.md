@@ -21,8 +21,7 @@
 ## Getting Started
 
 To get a local copy of the app, run the following commands in your terminal:
-- `git clone https://github.com/SiansandaTamara/blog-app.git`
-- `cd /Blog_app.git`
+- `git clone https://github.com/SiansandaTamara/blog-app.git``
 - `bundle install`
 
 Run the following commands to run the app
@@ -41,7 +40,6 @@ In your browser, go to
 
 
 ## Authors
-
 👤 **Tamara Siansanda**
 
 - GitHub: [@SiansandaTamara](https://github.com/SiansandaTamara)
