@@ -1,3 +1,7 @@
+<% if user_signed_in? %>
+      <%= button_to "Logout", destroy_user_session_path, method: :delete, data: {turbo: false}, class: "btn bg-danger text-light"  %>
+      <% end %>
+
 <% @users.each do |user| %>
     <%= render partial: 'partials/user', locals: { user: user } %>
  <% end %>

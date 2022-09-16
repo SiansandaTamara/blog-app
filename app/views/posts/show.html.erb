@@ -9,28 +9,31 @@
   <p><%= @post.text %></p>
 </article>
 
-<% if can? :destroy, @post %>
-  <%= button_to "Delete", user_post_path(post_id: @post.id), method: :delete, data: {
-    turbolinks: false,
-  } %>
-<% end %>
-<br />
+
 <%= form_for @like, url:post_likes_path(@post) do |f| %>
   <%= f.hidden_field :author_id, value: @post.author_id %>
   <%= f.hidden_field :post_id, value: @post.id %>
   <%= f.button nil, class: "like_btn" do %>
+    like
     <i class="fa-solid fa-thumbs-up"></i>
   <% end %>
   <% end %>
+
+  
+  <% if can? :destroy, @post %>
+  <%= button_to "Delete", user_post_path(post_id: @post.id), method: :delete, data: {
+    turbolinks: false,
+  } %>
+<% end %>
+<br /
 
 <ul class="comments-ul">
   <% @post.recent_comments.each do |comment| %>
     <li><%= comment.author.name %>: <%= comment.text %>
     <br>
     <% if can? :destroy, comment %>
-      <%= button_to "Delete", post_comment_path(id: comment.id, post_id: @post.id), method: :delete, data: {
+    <%= button_to "Delete Comment", post_comment_path(id: comment.id, post_id: @post.id), method: :delete, class: 'btn btn-danger' if can? :destroy, @post %>
         turbo: false,
-      } %>
     <% end %>
   <% end %>
 </ul> 

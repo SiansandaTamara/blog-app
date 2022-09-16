@@ -30,8 +30,6 @@ class CommentsController < ApplicationController
   private
 
   def comments_params
-    params.require(:comment).permit(:text).tap do |comments_params|
-      comments_params.require(:text)
-    end
+    params.require(:comment).permit(:text, :post_id, :author_id)
   end
 end
