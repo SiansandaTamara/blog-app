@@ -1,9 +1,15 @@
-<%= form_with model: @post, url: user_posts_path, scope: :post do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-
-    <%= f.label :body, "Post" %>
-    <%= f.text_area :text %>
-
-    <%= f.submit "Post" %>
+<%= form_with model: @post, url: user_posts_path do |f| %>
+    <% if @post.errors.any? %>
+       <ul class ="errors-decr">
+          <% @post.errors.full_messages.each do |errors| %>
+            <li><%= errors %></li>
+          <% end %>
+       </ul>
+    <% end %>
+  <%= f.hidden_field :author_id, value: @params ? @params['user_id'] : '' %>
+  <%= f.label :title, "Title:" %></br >
+  <%= f.text_field :title, placeholder: "Post Title" %>
+  <%= f.label :text, "Delete" %></br >
+  <%= f.text_area :text, placeholder: "Write Post..." %></br >
+  <%= f.submit "Submit post", disable_with: 'Submiting...' %>
 <% end %>

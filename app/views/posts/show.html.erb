@@ -7,16 +7,43 @@
   </div>
   </div>
   <p><%= @post.text %></p>
-  <%= form_with model: [@post, @post.likes.new] do |f| %>
-    <%= f.submit "Like" %>
-  <% end %>
-  <%= link_to "Comment", new_post_comment_path(@post) %>
 </article>
+
+
+<%= form_for @like, url:post_likes_path(@post) do |f| %>
+  <%= f.hidden_field :author_id, value: @post.author_id %>
+  <%= f.hidden_field :post_id, value: @post.id %>
+  <%= f.button nil, class: "like_btn" do %>
+    like
+    <i class="fa-solid fa-thumbs-up"></i>
+  <% end %>
+  <% end %>
+
+  
+  <% if can? :destroy, @post %>
+  <%= button_to "Delete", user_post_path(post_id: @post.id), method: :delete, data: {
+    turbolinks: false,
+  } %>
+<% end %>
+<br /
+
 <ul class="comments-ul">
   <% @post.recent_comments.each do |comment| %>
     <li><%= comment.author.name %>: <%= comment.text %>
+    <br>
+    <% if can? :destroy, comment %>
+    <%= button_to "Delete Comment", post_comment_path(id: comment.id, post_id: @post.id), method: :delete, class: 'btn btn-danger' if can? :destroy, @post %>
+        turbo: false,
+    <% end %>
   <% end %>
 </ul> 
 
-<%= link_to 'New Post', new_user_post_path(@user) %>
-<%= link_to 'all Posts', user_posts_path(@user) %>
+
+<h5>Add comment</h5>
+<%= form_for @comment, url:post_comments_path(@post) do |f| %>
+  <%= f.hidden_field :author_id, value: @post.author.id %>
+  <%= f.hidden_field :post_id, value: @post.id %>
+  <%= f.label :text %><br />
+  <%= f.text_area :text, placeholder:'What are your thoughts on this post?' %><br />
+  <%= f.submit "Submit comment", class:"see-all-post-btn", disable_with: 'Submiting Comment...' %>
+<% end %>
