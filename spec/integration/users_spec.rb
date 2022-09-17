@@ -17,4 +17,4 @@ RSpec.describe 'user_index', type: :feature do
     first(:link, @user.name).click
     expect(page.current_path).to eql(user_path(id: @user.id))
   end
- end
+end
