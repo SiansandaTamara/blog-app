@@ -7,9 +7,6 @@ RSpec.describe 'user_index', type: :feature do
   it 'shows the username of the users' do
     expect(page).to have_content('Tom')
   end
-  # it 'shows the photos of the users' do
-  #   expect(page.html).to include('avatal')
-  # end
   it 'shows the number of post of each user' do
     expect(page).to have_content("Number of Posts: #{@user.posts_counter}")
   end
